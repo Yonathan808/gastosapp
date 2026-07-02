@@ -4,12 +4,14 @@ class NumPadWidget extends StatelessWidget {
   final void Function(String) onDigit;
   final VoidCallback onTripleZero;
   final VoidCallback onBackspace;
+  final VoidCallback onClear;
 
   const NumPadWidget({
     super.key,
     required this.onDigit,
     required this.onTripleZero,
     required this.onBackspace,
+    required this.onClear,
   });
 
   @override
@@ -28,7 +30,7 @@ class NumPadWidget extends StatelessWidget {
             const SizedBox(width: 4),
             _key(context, label: '0', onTap: () => onDigit('0')),
             const SizedBox(width: 4),
-            _key(context, icon: Icons.backspace_outlined, onTap: onBackspace),
+            _key(context, icon: Icons.backspace_outlined, onTap: onBackspace, onLongPress: onClear),
           ],
         ),
       ],
@@ -51,6 +53,7 @@ class NumPadWidget extends StatelessWidget {
     String? label,
     IconData? icon,
     required VoidCallback onTap,
+    VoidCallback? onLongPress,
   }) {
     final scheme = Theme.of(context).colorScheme;
     return Expanded(
@@ -59,6 +62,7 @@ class NumPadWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(14),
         child: InkWell(
           onTap: onTap,
+          onLongPress: onLongPress,
           borderRadius: BorderRadius.circular(14),
           child: SizedBox(
             height: 58,

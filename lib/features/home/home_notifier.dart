@@ -66,6 +66,8 @@ class HomeNotifier extends Notifier<HomeFormState> {
 
   void selectCategory(String id) => state = state.copyWith(categoryId: id);
 
+  void clearAmount() => state = state.copyWith(amountString: '0');
+
   void setNote(String? text) =>
       state = state.copyWith(note: text, clearNote: text == null || text.isEmpty);
 

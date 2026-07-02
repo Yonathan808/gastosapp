@@ -51,6 +51,7 @@ class HomeScreen extends ConsumerWidget {
                         onDigit: notifier.appendDigit,
                         onTripleZero: notifier.appendTripleZero,
                         onBackspace: notifier.backspace,
+                        onClear: notifier.clearAmount,
                       ),
                     ),
                     const Gap(8),
@@ -111,7 +112,7 @@ class HomeScreen extends ConsumerWidget {
                       ref.read(homeNotifierProvider.notifier).setNote(null);
                       Navigator.pop(ctx);
                     },
-                    child: const Text(AppStrings.removeLimit),
+                    child: const Text(AppStrings.removeNote),
                   ),
                 ),
                 const Gap(12),

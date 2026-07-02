@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'app.dart';
 import 'core/constants/hive_boxes.dart';
 import 'data/models/category.dart';
@@ -11,6 +12,7 @@ import 'data/repositories/category_repository.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('es', null);
 
   await Hive.initFlutter();
   Hive.registerAdapter(ExpenseAdapter());
@@ -26,6 +28,7 @@ Future<void> main() async {
   ]);
 
   CategoryRepository().seedIfEmpty();
+  CategoryRepository().migrateCategories();
 
   runApp(const ProviderScope(child: GastosApp()));
 }

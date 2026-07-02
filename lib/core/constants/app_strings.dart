@@ -11,6 +11,7 @@ class AppStrings {
   static const noExpensesDesc = 'Registra tu primer gasto arriba';
   static const setLimit = 'Establecer límite';
   static const removeLimit = 'Sin límite';
+  static const removeNote = 'Sin nota';
   static const editLimit = 'Editar límite';
   static const overallLimitTitle = 'Límite total del mes';
   static const categoryBudgets = 'Metas por categoría';
